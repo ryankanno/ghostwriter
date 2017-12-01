@@ -514,11 +514,7 @@ table {
   .site-header {
     padding-top: 40px; }
 
-  .site-title {
-    float: none;
-    margin-bottom: 15px; }
-    .site-title a {
-      float: none; }
+  .site-title { margin-bottom: 15px; }
 
   .site-nav-item {
     display: block;
