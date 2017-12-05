@@ -11,10 +11,10 @@
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {{ if isset .Site.Params "favicon" }}<link rel="shortcut icon" href="{{ "/" | absURL }}{{ .Site.Params.favicon }}">{{ end }}
-        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/normalize.css?{{ .Now.Unix }}">
-        {{ if isset .Site.Params "highlight" }}<link rel="stylesheet" href="{{ "/css/highlight/" | absURL }}{{ .Site.Params.highlight }}.css?{{ .Now.Unix }}">{{ end }}
-        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css?{{ .Now.Unix }}">
-        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome/4.3.0/css/font-awesome.min.css?{{ .Now.Unix }}">
+        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/normalize.css?{{ now.Unix }}">
+        {{ if isset .Site.Params "highlight" }}<link rel="stylesheet" href="{{ "/css/highlight/" | absURL }}{{ .Site.Params.highlight }}.css?{{ now.Unix }}">{{ end }}
+        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css?{{ now.Unix }}">
+        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome/4.3.0/css/font-awesome.min.css?{{ now.Unix }}">
 
         {{ if .IsPage }}
         {{ if eq .Type "post" }}
