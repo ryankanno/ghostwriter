@@ -16,8 +16,14 @@
                   <span>{{ .Site.Params.copyright }}</span>
                 </p>
 
+                <p class="footer-copyright" style="font-size:.6em;">
+                  <span><a href="{{ .Site.BaseURL }}page/about/" style="font-weight:normal;">crafted with aloha</a></span>
+                </p>
+
+                <br/>
+
                 <p class="footer-copyright" style="font-size:.5em;">
-                  <span><a href="{{ .Site.BaseURL }}page/about/">crafted with aloha</a></span>
+                  <span>Last Generated: {{ .Lastmod.Format "January 2, 2006" }}</span>
                 </p>
             </div>
         </footer>
