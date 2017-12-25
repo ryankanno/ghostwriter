@@ -205,8 +205,9 @@ table {
       background: #303030; }
 
 .site-logo {
-  display: block; }
+  float:left; }
   .site-logo img {
+    width:31px;
     margin: 0; }
 
 .site-nav {
