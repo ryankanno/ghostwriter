@@ -193,7 +193,10 @@ table {
 }
 
 .comments {
-    margin-top: 10px;
+    border-top: 2px solid #EEE;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 40px 0;
 }
 
 /* ============================================================ */
@@ -229,8 +232,7 @@ table {
     }
 }
 .site-logo {
-    display: block;
-
+    float:left;
     img { margin: 0; }
 }
 
@@ -257,9 +259,8 @@ table {
 .post-container { margin: 0 40px; }
 
 .post-header {
-    border-bottom: 6px solid $secondary;
-    margin: 0 0 20px;
-    padding: 0 0 20px;
+    border-bottom: 2px solid #EEE;
+    margin: 0 0 25px;
     text-align: center;
     text-transform: uppercase;
 }
@@ -277,21 +278,18 @@ table {
 
 .post-date,
 .blog-description {
-    color: #AEADAD;
+    color: #8E8E8E;
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
-    margin: 25px 0 0;
 
-    a { color: #AEADAD; }
+    a { color: #8E8E8E; }
     a:hover { color: $primary; }
 
     &:after {
-        border-bottom: 1px dotted $secondary;
         content: "";
         display: block;
-        margin: 40px auto 0;
-        width: 100px;
+        margin: 20px auto 0;
     }
 }
 
@@ -304,7 +302,10 @@ table {
     &:last-child { margin-bottom: 0; }
 }
 
-.post-footer { margin-top: 5px; }
+.post-footer { 
+    margin-top: 5px; 
+    padding-bottom: 25px;
+}
 
 .post-tags,
 .share {
@@ -502,7 +503,6 @@ table {
     background: $secondary;
     color: #D3D3D3;
     height: 265px;
-    margin-top: 95px;
     overflow: auto;
 
     .site-title-wrapper { margin: 80px auto 35px; }
@@ -546,6 +546,11 @@ table {
     border-top-color: $primary;
     border-left-color: $primary;
 }
+
+/* ============================================================ */
+/* Gist */
+/* ============================================================ */
+.gist tr { border-bottom: none !important; }
 
 /* ============================================================ */
 /* Media Queries */
