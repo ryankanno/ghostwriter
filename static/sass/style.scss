@@ -585,8 +585,9 @@ ul#all-tags { margin-bottom:40px; }
     }
 
     .site-title {
-        float: none;
+        float: left;
         margin-bottom: 15px;
+        padding-top:5px;
 
         a {
             float: none;

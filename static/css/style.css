@@ -514,8 +514,9 @@ ul#all-tags {
   .site-header {
     padding-top: 40px; }
   .site-title {
-    float: none;
-    margin-bottom: 15px; }
+    float: left;
+    margin-bottom: 15px;
+    padding-top: 5px; }
     .site-title a {
       float: none; }
   .site-nav-item {
