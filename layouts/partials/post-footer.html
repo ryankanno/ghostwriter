@@ -2,10 +2,8 @@
     {{ if .Params.tags }}
         <p class="post-tags">
             <span>Tagged:</span>
-            {{ range .Params.tags }}
-                 <a href="/tags/{{ . | urlize }}/">{{ . }}</a>
-            {{ end }}
-	    <a href="/tags/">[all]</a>
+            {{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}<a href="/tags/{{ . | urlize }}/">{{ . }}</a>{{ end }}
+            <a href="/tags/">[all]</a>
         </p>
     {{ end}}
 
