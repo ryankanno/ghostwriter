@@ -72,12 +72,12 @@
                                 <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
                             </h1>
                         {{ end }}
-			{{ if .Site.Params.rss }}
+                        {{ if .Site.Params.rss }}
                         	<a class="button-square" href="{{ .Site.BaseURL }}index.xml"><i title="RSS Feed" class="fa fa-rss"></i></a>
-			{{ end }}
-                        {{ with .Site.Params.twitter }}
-                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="{{ . }}">
-                                <i class="fa fa-twitter"></i>
+                        {{ end }}
+                        {{ with .Site.Params.linkedin }}
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="{{ . }}">
+                                <i class="fa fa-linkedin"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.github }}
@@ -85,21 +85,14 @@
                                 <i class="fa fa-github-alt"></i>
                             </a>
                         {{ end }}
-                        {{ with .Site.Params.stackoverflow }}
-                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="{{ . }}">
-                                <i class="fa fa-stack-overflow"></i>
+                        {{ with .Site.Params.twitter }}
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="{{ . }}">
+                                <i class="fa fa-twitter"></i>
                             </a>
                         {{ end }}
-                        {{ with .Site.Params.linkedin }}
-                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="{{ . }}">
-                                <i class="fa fa-linkedin"></i>
-                            </a>
-                        {{ end }}
-                        {{ with .Site.Params.gplus }}
-                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="{{ . }}">
-                                <i class="fa fa-google-plus"></i>
-                            </a>
-                        {{ end }}
+                        <a class="button-square button-social hint--top" title="About" href="/about" style="padding:0">
+                          <img src="{{ .Site.BaseURL }}img/ryan-profile.png" width="32" height="32" style="margin:0"/>
+                        </a>
                     </div>
 
                     <ul class="site-nav">
