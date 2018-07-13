@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ .Site.BaseURL }}css/normalize.css?{{ now.Unix }}">
         {{ if isset .Site.Params "highlight" }}<link rel="stylesheet" href="{{ "/css/highlight/" | absURL }}{{ .Site.Params.highlight }}.css?{{ now.Unix }}">{{ end }}
         <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css?{{ now.Unix }}">
-        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome/4.3.0/css/font-awesome.min.css?{{ now.Unix }}">
+        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome/4.3.0/css/font-awesome.min.css">
 
         {{ if .IsPage }}
         {{ if eq .Type "post" }}
