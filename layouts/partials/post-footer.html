@@ -19,5 +19,14 @@
             <i class="fa fa-facebook"></i>
             <span class="hidden">Facebook</span>
         </a>
+        <a class="icon-email" href="mailto:?body=Check&nbsp;out&nbsp;{{ .Permalink }}&subject={{ .Permalink }}">
+            <i class="fa fa-envelope"></i>
+            <span class="hidden">Email</span>
+        </a>
+        <a class="icon-get-pocket" href="https://getpocket.com/save?url={{.Permalink }}&title={{ .Title }}"
+            onclick="window.open(this.href, 'get-pocket-share','width=580,height=296');return false;">
+            <i class="fa fa-get-pocket"></i>
+            <span class="hidden">GetPocket</span>
+        </a>
     </div>
 </footer>
