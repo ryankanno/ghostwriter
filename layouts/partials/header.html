@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ .Site.BaseURL }}css/normalize.css?{{ now.Unix }}">
         {{ if isset .Site.Params "highlight" }}<link rel="stylesheet" href="{{ "/css/highlight/" | absURL }}{{ .Site.Params.highlight }}.css?{{ now.Unix }}">{{ end }}
         <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css?{{ now.Unix }}">
-        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
         {{ if .IsPage }}
         {{ if eq .Type "post" }}
@@ -77,17 +77,17 @@
                         {{ end }}
                         {{ with .Site.Params.linkedin }}
                             <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="{{ . }}">
-                                <i class="fa fa-linkedin"></i>
+                                <i class="fab fa-linkedin-in"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.github }}
                             <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="{{ . }}">
-                                <i class="fa fa-github-alt"></i>
+                                <i class="fab fa-github"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.twitter }}
                             <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="{{ . }}">
-                                <i class="fa fa-twitter"></i>
+                                <i class="fab fa-twitter"></i>
                             </a>
                         {{ end }}
                         <a class="button-square button-social hint--top" title="About" href="/about" style="padding:0">
