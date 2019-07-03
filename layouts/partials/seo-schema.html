@@ -36,12 +36,11 @@
      <meta itemprop="description" content="{{if .Params.summary }}{{ .Params.summary  }}{{ else }}{{ if .Description }}{{ .Description }}{{ end }}{{ end }}" />
      <meta itemprop="wordCount" content="{{ .WordCount }}" />
      <meta itemprop="keywords" content="{{ range $i,$e := .Params.tags }}{{ if $i }},{{ end }}{{ $e }}{{ end }}" />
-     
      <meta itemprop="copyrightYear" content="{{ .Date.Format "2006" }}" />
-    <div itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Person">
+     <div itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="{{ .Params.author }}">
     </div>
-    
+
     {{ if .Params.image }}
      <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
          <img  itemprop="url" src="{{.Params.image | absURL}}" alt="thumbnail">
