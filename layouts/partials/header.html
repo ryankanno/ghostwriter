@@ -1,104 +1,106 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ .Title }} &middot; {{ .Site.Title }}</title>
-        <meta name="description" content="{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-        <meta name="HandheldFriendly" content="True">
-        <meta name="MobileOptimized" content="320">
-        {{ .Hugo.Generator }}
-        <meta name="robots" content="index,follow">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {{ if isset .Site.Params "favicon" }}<link rel="shortcut icon" href="{{ "/" | absURL }}{{ .Site.Params.favicon }}">{{ end }}
-        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/normalize.css?{{ now.Unix }}">
-        {{ if isset .Site.Params "highlight" }}<link rel="stylesheet" href="{{ "/css/highlight/" | absURL }}{{ .Site.Params.highlight }}.css?{{ now.Unix }}">{{ end }}
-        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css?{{ now.Unix }}">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{{ .Title }} &middot; {{ .Site.Title }}</title>
+    <meta name="description" content="{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    {{ .Hugo.Generator }}
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ if isset .Site.Params "favicon" }}<link rel="shortcut icon" href="{{ "/" | absURL }}{{ .Site.Params.favicon }}">{{ end }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/normalize.css?{{ now.Unix }}">
+    {{ if isset .Site.Params "highlight" }}<link rel="stylesheet" href="{{ "/css/highlight/" | absURL }}{{ .Site.Params.highlight }}.css?{{ now.Unix }}">{{ end }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css?{{ now.Unix }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-        {{ if .IsPage }}
-        {{ if eq .Type "post" }}
+    {{ if .IsPage }}
+    {{ if eq .Type "post" }}
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ .URL | absURL }}" />
+    <meta property="og:title" content="{{ .Title }}" />
 
-            <!-- Open Graph Metadata -->
-            <meta property="og:type"   content="article" />
-            <meta property="og:url"    content="{{ .URL | absURL }}" />
-            <meta property="og:title"  content="{{ .Title }}" />
+    <meta name="twitter:domain" value="nocruft.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" value="{{ .Title }}" />
+    {{ if isset .Params "summary" }}
+    <meta name="twitter:description" value="{{ .Params.summary }}"/>
+    {{ end }}
+    <meta name="twitter:url" value="{{ .URL | absURL }}"/>
 
-            <meta name="twitter:domain" value="lustforge.com" />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" value="{{ .Title }}" />
-            {{ if isset .Params "summary" }}
-             <meta name="twitter:description" value="{{ .Params.summary }}"/>
+    {{ if isset .Params "image" }}
+    <meta property="og:image"  content="{{.Params.image | absURL}}">
+    <meta property="twitter:image"  content="{{.Params.image | absURL}}">
+    {{ end }}
+    {{ end }}
+    {{ else if .IsHome }}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ryankanno" />
+    <meta name="twitter:creator" content="@ryankanno" />
+    <meta name="twitter:url" content="{{ .Site.BaseURL }}" />
+    <meta property="og:url" content="{{ .Site.BaseURL }}" />
+    <meta property="og:title" content="{{ .Site.Title }}" />
+    <meta property="og:description" content="{{ .Params.summary }}" />
+    {{ end }}
+    <link type="text/plain" rel="author" href="{{ .Site.BaseURL }}humans.txt" />
+    <script>
+      WebFontConfig = {
+        google: { families: ['Open Sans:300italic,400italic,600italic,700italic,400,600,700,300:latin,cyrillic-ext,latin-ext,cyrillic'] }
+      };
+
+      (function(d) {
+        var wf = d.createElement('script'), s = d.scripts[0];
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+      })(document);
+    </script>
+  </head>
+  <body>
+    {{ template "_internal/google_analytics_async.html" . }}
+
+    <div id="wrapper">
+      <header class="site-header">
+        <div class="container">
+          <div class="site-title-wrapper">
+            {{ with .Site.Params.logo }}
+            <a class="site-logo" title="{{ $.Site.Title }}" href="{{ $.Site.BaseURL }}">
+              <img src="{{ . }}" alt="{{ $.Site.Title }}" />
+            </a>
+            {{ else }}
+            <h1 class="site-title">
+              <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+            </h1>
             {{ end }}
-
-            <!-- TODO minify URL's -->
-            <meta name="twitter:url" value="{{ .URL | absURL }}"/>
-
-            {{ if isset .Params "image" }}
-            <meta property="og:image"  content="{{.Params.image | absURL}}">
-            <meta property="twitter:image"  content="{{.Params.image | absURL}}">
+            {{ if .Site.Params.rss }}
+            <a class="button-square" href="{{ .Site.BaseURL }}index.xml"><i title="RSS Feed" class="fa fa-rss"></i></a>
             {{ end }}
-        {{ else }}
+            {{ with .Site.Params.linkedin }}
+            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="{{ . }}">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            {{ end }}
+            {{ with .Site.Params.github }}
+            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="{{ . }}">
+              <i class="fab fa-github"></i>
+            </a>
+            {{ end }}
+            {{ with .Site.Params.twitter }}
+            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="{{ . }}">
+              <i class="fab fa-twitter"></i>
+            </a>
+            {{ end }}
+            <a class="button-square button-social hint--top" title="About" href="/about" style="padding:0">
+              <img src="{{ .Site.BaseURL }}img/ryan-profile.png" height="30px" style="margin:0"/>
+            </a>
+          </div>
 
-        {{ end }}
-        {{ end }}
-        <link type="text/plain" rel="author" href="{{ .Site.BaseURL }}humans.txt" />
-        <script>
-           WebFontConfig = {
-              google: { families: ['Open Sans:300italic,400italic,600italic,700italic,400,600,700,300:latin,cyrillic-ext,latin-ext,cyrillic'] }
-           };
+          <ul class="site-nav">
+            {{ partial "navigation.html" . }}
+          </ul>
+        </div>
+      </header>
 
-           (function(d) {
-              var wf = d.createElement('script'), s = d.scripts[0];
-              wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-              wf.async = true;
-              s.parentNode.insertBefore(wf, s);
-           })(document);
-        </script>
-    </head>
-    <body>
-        {{ template "_internal/google_analytics_async.html" . }}
-
-        <div id="wrapper">
-            <header class="site-header">
-                <div class="container">
-                    <div class="site-title-wrapper">
-                        {{ with .Site.Params.logo }}
-                            <a class="site-logo" title="{{ $.Site.Title }}" href="{{ $.Site.BaseURL }}">
-                                <img src="{{ . }}" alt="{{ $.Site.Title }}" />
-                            </a>
-                        {{ else }}
-                            <h1 class="site-title">
-                                <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-                            </h1>
-                        {{ end }}
-                        {{ if .Site.Params.rss }}
-                        	<a class="button-square" href="{{ .Site.BaseURL }}index.xml"><i title="RSS Feed" class="fa fa-rss"></i></a>
-                        {{ end }}
-                        {{ with .Site.Params.linkedin }}
-                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="{{ . }}">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        {{ end }}
-                        {{ with .Site.Params.github }}
-                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="{{ . }}">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        {{ end }}
-                        {{ with .Site.Params.twitter }}
-                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="{{ . }}">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        {{ end }}
-                        <a class="button-square button-social hint--top" title="About" href="/about" style="padding:0">
-                          <img src="{{ .Site.BaseURL }}img/ryan-profile.png" height="30px" style="margin:0"/>
-                        </a>
-                    </div>
-
-                    <ul class="site-nav">
-                        {{ partial "navigation.html" . }}
-                    </ul>
-                </div>
-            </header>
-
-            <div id="container">
+      <div id="container">
