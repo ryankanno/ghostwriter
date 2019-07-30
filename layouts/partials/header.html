@@ -13,9 +13,13 @@
     {{ $main_options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed") -}}
     {{ if eq hugo.Environment "development" -}}
       {{ $main_options = (dict "targetPath" "css/styles.css" "outputStyle" "nested" "enableSourceMap" true) -}}
-    {{ end -}}
-    {{ $main_style := resources.Get "scss/styles.scss" | toCSS $main_options | fingerprint -}}
-    <link rel="stylesheet" href="{{ $main_style.Permalink }}">
+      {{ $main_style := resources.Get "scss/styles.scss" | toCSS $main_options | fingerprint -}}
+      <link rel="stylesheet" href="{{ $main_style.Permalink }}">
+    {{ else -}}
+      {{ with $styles := resources.Get "scss/styles.scss" | toCSS $main_options | postCSS | fingerprint -}}
+        <style>{{ .Content | safeCSS }}</style>
+      {{ end }}
+    {{ end }}
     {{ if or .IsPage .IsHome -}}
     <meta name="twitter:creator" content="{{ .Site.Author.twitter }}" />
     <meta name="twitter:domain" value="{{ .Site.Params.domain }}" />
