@@ -33,7 +33,7 @@
         {{ $fitvid := resources.Get "js/jquery.fitvids.js" -}}
         {{ $project_script := resources.Get "js/scripts.js" -}}
         {{ $jsCombined := slice $jquery $highlight $fitvid $project_script | resources.Concat "js/main.js" -}}
-        {{ $js := $jsCombined | resources.Minify -}}
+        {{ $js := $jsCombined | resources.Minify | fingerprint -}}
         <script src="{{ $js.Permalink }}"></script>
     </body>
 </html>
