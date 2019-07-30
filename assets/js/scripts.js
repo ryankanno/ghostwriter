@@ -1,4 +1,4 @@
-jQuery(function($) {
+;jQuery(function($) {
 
     /* ============================================================ */
     /* Responsive Videos */
@@ -12,8 +12,7 @@ jQuery(function($) {
 
     $('.js-jump-top').on('click', function(e) {
         e.preventDefault();
-
-        $('html, body').animate({'scrollTop': 0});
+        document.querySelector('body').scrollIntoView({behavior: 'smooth'});
     });
 });
 
