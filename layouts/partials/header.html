@@ -16,7 +16,7 @@
       {{ $main_style := resources.Get "scss/styles.scss" | toCSS $main_options | fingerprint -}}
       <link rel="stylesheet" href="{{ $main_style.Permalink }}">
     {{ else -}}
-      {{ with $styles := resources.Get "scss/styles.scss" | toCSS $main_options | postCSS | fingerprint -}}
+      {{ with $styles := resources.Get "scss/styles.scss" | toCSS $main_options | postCSS (dict "config" "assets/postcss.config.js" "noMap" true) | fingerprint -}}
         <style>{{ .Content | safeCSS }}</style>
       {{ end }}
     {{ end }}
