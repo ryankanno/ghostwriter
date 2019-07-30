@@ -4,52 +4,51 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>{{ .Title }} &middot; {{ .Site.Title }}</title>
-    <meta name="description" content="{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta name="description" content="{{ if ne .Description "" -}}{{ .Description }}{{ else -}}{{ .Site.Params.description }}{{ end -}}">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="robots" content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ if isset .Site.Params "favicon" }}<link rel="shortcut icon" href="{{ "/" | absURL }}{{ .Site.Params.favicon }}">{{ end }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/normalize.css?{{ now.Unix }}">
-    {{ if isset .Site.Params "highlight" }}<link rel="stylesheet" href="{{ "/css/highlight/" | absURL }}{{ .Site.Params.highlight }}.css?{{ now.Unix }}">{{ end }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css?{{ now.Unix }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-    {{ if or .IsPage .IsHome }}
+    {{ if isset .Site.Params "favicon" -}}<link rel="shortcut icon" href="{{ "/" | absURL }}{{ .Site.Params.favicon }}">{{ end }}
+    {{ $main_options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed") -}}
+    {{ if eq hugo.Environment "development" -}}
+      {{ $main_options = (dict "targetPath" "css/styles.css" "outputStyle" "nested" "enableSourceMap" true) -}}
+    {{ end -}}
+    {{ $main_style := resources.Get "scss/styles.scss" | toCSS $main_options | fingerprint -}}
+    <link rel="stylesheet" href="{{ $main_style.Permalink }}">
+    {{ if or .IsPage .IsHome -}}
     <meta name="twitter:creator" content="{{ .Site.Author.twitter }}" />
     <meta name="twitter:domain" value="{{ .Site.Params.domain }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="{{ .Site.Author.twitter }}" />
     <meta name="twitter:title" value="{{ .Title }}" />
-    {{ if eq .Type "post" }}
+    {{ if eq .Type "post" -}}
     <meta name="twitter:url" value="{{ .URL | absURL }}"/>
-    {{ else if .IsHome }}
+    {{ else if .IsHome -}}
     <meta name="twitter:url" content="{{ .Site.BaseURL }}" />
-    {{ end }}
-    {{ if isset .Params "description" }}
+    {{ end -}}
+    {{ if isset .Params "description" -}}
     <meta name="twitter:description" value="{{ .Params.description }}"/>
-    {{ end }}
-    {{ if isset .Params "image" }}
+    {{ end -}}
+    {{ if isset .Params "image" -}}
     <meta property="twitter:image"  content="{{ .Params.image | absURL}}">
-    {{ end }}
-
-    {{ if eq .Type "post" }}
+    {{ end -}}
+    {{ if eq .Type "post" -}}
     <meta property="og:type" content="article" />
     <meta property="article:author" content="{{ .Site.Author.facebook }}">
     <meta property="og:url" content="{{ .URL | absURL }}" />
-    {{ else if .IsHome }}
+    {{ else if .IsHome -}}
     <meta property="og:type" content="blog" />
     <meta property="og:url" content="{{ .Site.BaseURL }}" />
-    {{ end }}
+    {{ end -}}
     <meta property="og:title" content="{{ .Title }}" />
-    {{ if isset .Params "description" }}
+    {{ if isset .Params "description" -}}
     <meta property="og:description" content="{{ .Params.description }}" />
-    {{ end }}
-    {{ if isset .Params "image" }}
+    {{ end -}}
+    {{ if isset .Params "image" -}}
     <meta property="og:image"  content="{{.Params.image | absURL}}">
-    {{ end }}
-    {{ end }}
-
+    {{ end -}}
+    {{ end -}}
     <link type="text/plain" rel="author" href="{{ .Site.BaseURL }}humans.txt" />
     <script>
       WebFontConfig = {
