@@ -56,6 +56,39 @@
     <style>{{ .Content | safeCSS }}</style>
     {{ end }}
     {{ end }}
+    {{ if eq .Type "galleries" -}}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/photoswipe/photoswipe.css"/>
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/photoswipe/default-skin/default-skin.css"/>
+
+    <script type="application/javascript" src="{{ .Site.BaseURL }}js/photoswipe/photoswipe.min.js"></script>
+    <script type="application/javascript" src="{{ .Site.BaseURL }}js/photoswipe/photoswipe-ui-default.min.js"></script>
+
+    <style type="text/css">
+    div.gallery { width: 100%; margin: 0 auto 3em auto; text-align:center;}
+    div.gallery > figure { display:inline-block; text-align:center; margin: 0 auto; }
+    div.gallery > figure img { display:inline-block; text-align:center; margin: 0 auto; }
+    div.gallery > figure figcaption { display:none; }
+    .pswp__caption__center > span { float:right; }
+
+    div.gallery > figure { background-color: #fff; padding: 1em; box-shadow: 0 0.25em 1em rgba(0, 0, 0, 0.2); }
+    div.gallery > figure figcaption { font-size: 2em; text-align: center; transition: all 0.3s; } 
+    div.gallery > figure { display: inline-block; margin-top: 2em; -webkit-filter: grayscale(90%); filter: grayscale(90%); }
+    div.gallery > figure :before { content: ""; position: absolute; z-index: -1; transition: all 0.3s; } 
+    div.gallery > figure:nth-of-type(4n+1) { -webkit-transform: scale(0.8, 0.8) rotate(5deg); transform: scale(0.8, 0.8) rotate(5deg); transition: all 0.3s; }
+    div.gallery > figure:nth-of-type(4n+1):before { -webkit-transform: rotate(4deg); transform: rotate(4deg); width: 45%; height: 20%; bottom: 30px; right: 10px; }
+    div.gallery > figure:nth-of-type(4n+2) { -webkit-transform: scale(0.8, 0.8) rotate(-5deg); transform: scale(0.8, 0.8) rotate(-5deg); transition: all 0.3s; }
+    div.gallery > figure:nth-of-type(4n+2):before { -webkit-transform: rotate(-4deg); transform: rotate(-4deg); width: 45%; height: 20%; bottom: 30px; right: 10px; }
+    div.gallery > figure:nth-of-type(4n+3) { -webkit-transform: scale(0.8, 0.8) rotate(-3deg); transform: scale(0.8, 0.8) rotate(-3deg); transition: all 0.3s; }
+    div.gallery > figure:nth-of-type(4n+3):before { -webkit-transform: rotate(-4deg); transform: rotate(-4deg); width: 45%; height: 20%; bottom: 30px; right: 10px; }
+    div.gallery > figure:nth-of-type(4n+4) { -webkit-transform: scale(0.8, 0.8) rotate(3deg); transform: scale(0.8, 0.8) rotate(3deg); transition: all 0.3s; }
+    div.gallery > figure:nth-of-type(4n+4):before { -webkit-transform: rotate(-4deg); transform: rotate(-4deg); width: 45%; height: 20%; bottom: 30px; right: 10px; }
+    div.gallery > figure:nth-of-type(4n+5) { -webkit-transform: scale(0.8, 0.8) rotate(0deg); transform: scale(0.8, 0.8) rotate(0deg); transition: all 0.3s; }
+    div.gallery > figure:nth-of-type(4n+5):before { -webkit-transform: rotate(0deg); transform: rotate(0deg); width: 45%; height: 20%; bottom: 30px; right: 10px; }
+    div.gallery > figure:hover { -webkit-transform: scale(1, 1) rotate(0deg); transform: scale(1, 1) rotate(0deg); -webkit-filter: none; filter: none; transition: all 0.3s; }
+    div.gallery > figure:hover:before { content: ""; position: absolute; width: 90%; height: 90%; bottom: 0%; right: 5%; z-index: -1; -webkit-transform: rotate(0deg); transform: rotate(0deg); transition: all 0.3s; }
+    </style>
+
+    {{ end }}
     <link type="text/plain" rel="author" href="{{ .Site.BaseURL }}humans.txt" />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Open Sans:300italic,400italic,600italic,700italic,400,600,700,300:latin,cyrillic-ext,latin-ext,cyrillic&display=swap" />
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans:300italic,400italic,600italic,700italic,400,600,700,300:latin,cyrillic-ext,latin-ext,cyrillic&display=swap" />
