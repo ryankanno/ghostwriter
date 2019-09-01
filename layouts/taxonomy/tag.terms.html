@@ -1,0 +1,17 @@
+{{ partial "header.html" . }}
+
+<div class="container">
+  <article class="post-container">
+
+  {{ partial "page-header.html" . }}
+
+	<ul id="all-tags">
+    {{ range .Site.Taxonomies.tags }}
+    <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>&nbsp;&nbsp;&nbsp;<small>({{ .Count }})</small></li>
+    {{ end }}
+	</ul>
+
+  </article>
+</div>
+
+{{ partial "footer.html" . }}
