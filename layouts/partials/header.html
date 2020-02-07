@@ -18,7 +18,7 @@
     <meta name="twitter:site" content="{{ .Site.Author.twitter }}" />
     <meta name="twitter:title" value="{{ .Title }}" />
     {{ if eq .Type "post" -}}
-    <meta name="twitter:url" value="{{ .URL | absURL }}"/>
+    <meta name="twitter:url" value="{{ .Permalink | absURL }}"/>
     {{ else if .IsHome -}}
     <meta name="twitter:url" content="{{ .Site.BaseURL }}" />
     {{ end -}}
@@ -31,7 +31,7 @@
     {{ if eq .Type "post" -}}
     <meta property="og:type" content="article" />
     <meta property="article:author" content="{{ .Site.Author.facebook }}">
-    <meta property="og:url" content="{{ .URL | absURL }}" />
+    <meta property="og:url" content="{{ .Permalink | absURL }}" />
     {{ else if .IsHome -}}
     <meta property="og:type" content="blog" />
     <meta property="og:url" content="{{ .Site.BaseURL }}" />
