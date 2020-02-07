@@ -15,17 +15,17 @@
     <meta name="twitter:creator" content="{{ .Site.Author.twitter }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="{{ .Site.Author.twitter }}" />
-    <meta name="twitter:title" value="{{ .Title }}" />
+    <meta name="twitter:title" content="{{ .Title }}" />
     {{ if eq .Type "post" -}}
-    <meta name="twitter:url" value="{{ .Permalink | absURL }}"/>
+    <meta name="twitter:url" content="{{ .Permalink | absURL }}"/>
     {{ else if .IsHome -}}
     <meta name="twitter:url" content="{{ .Site.BaseURL }}" />
     {{ end -}}
     {{ if isset .Params "description" -}}
-    <meta name="twitter:description" value="{{ .Params.description }}"/>
+    <meta name="twitter:description" content="{{ .Params.description }}"/>
     {{ end -}}
     {{ if isset .Params "image" -}}
-    <meta property="twitter:image"  content="{{ .Params.image | absURL}}">
+    <meta name="twitter:image"  content="{{ .Params.image | absURL}}">
     {{ end -}}
     {{ if eq .Type "post" -}}
     <meta property="og:type" content="article" />
