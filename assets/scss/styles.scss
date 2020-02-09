@@ -66,16 +66,16 @@ ul, ol {
 }
 
 blockquote {
-    border-left: 1px solid $secondary;
-    margin: 40px 0;
-    padding: 5px 30px;
-    p {
-      color: #AEADAD;
-      display: block;
-      font-style: italic;
-      margin: 0;
-      width: 100%;
-    }
+  border-left: 1px solid $secondary;
+  margin: 40px 0;
+  padding: 5px 30px;
+  p {
+    color: #aeadad;
+    display: block;
+    font-style: italic;
+    margin: 0;
+    width: 100%;
+  }
 }
 
 img {
