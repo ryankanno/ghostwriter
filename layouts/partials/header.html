@@ -9,6 +9,10 @@
     <meta name="MobileOptimized" content="320">
     <meta name="robots" content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ with .OutputFormats.Get "rss" -}}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title | safeHTML }}"/>
+    {{ end -}}
+
     {{ if isset .Site.Params "favicon" -}}<link rel="shortcut icon" href="{{ "/" | absURL }}{{ .Site.Params.favicon }}">{{ end -}}
 
     {{ if or .IsPage .IsHome -}}
